@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>One Day Geekweek</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/default.css">
+  </head>
+  <body>
+
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+	var urlParams;
+	(window.onpopstate = function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    urlParams = {};
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+	})();
+
+	if (urlParams["slide"]) {
+		var slide = urlParams["slide"] + '.md'
+	} else {
+		var slide = 'agenda.md'
+	}
+
+    var slideshow = remark.create({
+      sourceUrl: slide
+    });
+    </script>
+  </body>
+</html>
